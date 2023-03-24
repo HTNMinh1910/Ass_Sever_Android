@@ -289,7 +289,7 @@ app.post('/addNewPr/done', (req, res) => {
       let newPr = req.body
       let obj = JSON.parse(data)
       let dataPr = fs.readFileSync('list_product.json')
-      let myData = JSON.parse(req.body)
+      let myData = JSON.parse(dataPr)
       fs.readFile('list_user.json', function (err, data) {
           let daU = fs.readFileSync('list_user.json')
           let myDataU = JSON.parse(daU)
