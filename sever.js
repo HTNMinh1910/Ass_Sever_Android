@@ -173,7 +173,13 @@ app.get('/addNew', (req, res) => {
       let obj = JSON.parse(data)
       let da = fs.readFileSync('list_user.json')
       let myData = JSON.parse(da)
-      let newObj = { "id": obj[obj.length - 1].id + 1, "email": emailRes, "name": nameRes, "pass": passRes, "image": imgRes }
+      let newObj = { 
+        "id": obj[obj.length - 1].id + 1, 
+      "email": emailRes, 
+      "name": nameRes, 
+      "pass": passRes, 
+      "image": imgRes 
+    }
       myData.push(newObj)
       let newData = JSON.stringify(myData)
       fs.writeFile('list_user.json', newData, function (err) {
@@ -283,13 +289,22 @@ app.post('/addNewPr/done', (req, res) => {
       let newPr = req.body
       let obj = JSON.parse(data)
       let dataPr = fs.readFileSync('list_product.json')
-      let myData = JSON.parse(dataPr)
+      let myData = JSON.parse(req.body)
       fs.readFile('list_user.json', function (err, data) {
           let daU = fs.readFileSync('list_user.json')
           let myDataU = JSON.parse(daU)
           for (let j = 0; j < myDataU.length; j++) {
-              if (myDataU[j].id == newPr.idKHPr) {
-                  let newObj = { "id": obj[obj.length - 1].id + 1, "namePr": newPr.namePr, "price": newPr.pricePr, "imgPr": newPr.imgPr, "color": newPr.clPr, "type": newPr.tPr, "idUser": parseInt(newPr.idKHPr), "nameUser": myDataU[j].name }
+              if (myDataU[j].id == req.body.idKHPr) {
+                  let newObj = { 
+                    "id": obj[obj.length - 1].id + 1, 
+                    "namePr": req.body.namePr, 
+                    "price": req.body.pricePr, 
+                    "imgPr": req.body.imgPr, 
+                    "color": req.body.clPr, 
+                    "type": req.body.tPr, 
+                    "idUser": parseInt(req.body.idKHPr), 
+                    "nameUser": myDataU[j].name 
+                  }
                   myData.push(newObj)
                   console.log(myData);
                   let newData = JSON.stringify(myData)

@@ -75,16 +75,18 @@
                  </div>
              </figcaption>
          </div>
-         <div class="bottom-wrap"> <form method="get" action="updatePr">
-                                    <button type="submit">Sửa</button>
-                                    <input value={{id}} class="d-none" name="prNum">
-                                </form>
-             <div class="price-wrap"> 
-                                <form method="get" action="deletePr">
-                                    <button type="submit">Xóa</button>
-                                    <input value={{id}} class="d-none" name="prNum">
-                                </form> </div>
+         <figcaption class="info-wrap">
+            <div class="row">
+             <form method="get" action="updatePr" class="col-md-9 col-xs-9">
+                <button type="submit">Sửa</button>
+                <input value={{id}} class="d-none" name="prNum">
+                </form>
+                <form method="get" action="deletePr" class="col-md-3 col-xs-3">
+                <button type="submit">Xóa</button>
+                <input value={{id}} class="d-none" name="prNum">
+             </form>
          </div>
+         </figcaption>
      </figure>
      {{/each}}
  </div>
