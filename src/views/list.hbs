@@ -4,70 +4,116 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" type="text/css" rel="stylesheet"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+   <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="http://localhost:8030/"/>
 	<title>Document</title>
 </head>
 <body>
-	<div class="container bootstrap snippets bootdey">
+   <div class="container">
+
 		<div class="row">
-			<div class="col-lg-12">
-					<div class="main-box no-header clearfix">
-						<div class="main-box-body clearfix">
-							<div class="table-responsive">
-									<table class="table user-list">
-										<thead>
-											<tr>
-											<th><span>User</span></th>
-											<th><span>Created</span></th>
-											<th class="text-center"><span>Status</span></th>
-											<th><span>Email</span></th>
-											<th>&nbsp;</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-													<td>
-														<img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
-														<a href="#" class="user-link">Full name 1</a>
-														<span class="user-subhead">Member</span>
-													</td>
-													<td>2013/08/12</td>
-													<td class="text-center">
-														<span class="label label-default">pending</span>
-													</td>
-													<td>
-														<a href="#">marlon@brando.com</a>
-													</td>
-													<td style="width: 20%;">
-														<a href="#" class="table-link text-warning">
-															<span class="fa-stack">
-																	<i class="fa fa-square fa-stack-2x"></i>
-																	<i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-															</span>
-														</a>
-														<a href="#" class="table-link text-info">
-															<span class="fa-stack">
-																	<i class="fa fa-square fa-stack-2x"></i>
-																	<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-															</span>
-														</a>
-														<a href="#" class="table-link danger">
-															<span class="fa-stack">
-																	<i class="fa fa-square fa-stack-2x"></i>
-																	<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-															</span>
-														</a>
-													</td>
-											</tr>
-										</tbody>
-									</table>
-							</div>
-						</div>
-					</div>
+            <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Bootstrap</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Người dùng
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="addUser">Thêm người dùng </a></li>
+                                    <li><a class="dropdown-item" href="#">Danh sách người dùng</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="listPrs">Sản phẩm</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <ul class="navbar-right bg-danger bg-gradient navbar-nav me-auto mb-2 ps-1 pe-1 mb-lg-0 rounded-4">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="/login">Đăng xuất</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+		<input class="form-control" id="myInput" type="text" placeholder="Search..">
+<div class="row">
+	<div class="col-lg-12">
+		<div class="main-box clearfix">
+			<div class="table-responsive">
+				<table class="table user-list">
+					<thead>
+						<tr>
+							<th><span>User</span></th>
+							<th><span>Created</span></th>
+							<th class="text-center"><span>Status</span></th>
+							<th><span>Email</span></th>
+							<th>&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody id="myTable">
+						{{#each userData}}
+						<tr>
+							<td>
+								<img src={{image}} width="50" height="50" alt="">
+								<a href="#" class="user-link">{{name}}</a>
+								<span class="user-subhead">Admin</span>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td class="text-center">
+								<span class="label label-success">Active</span>
+							</td>
+							<td>
+								<a href="#">{{email}}</a>
+							</td>
+							<td style="width: 10%;">
+								<div class="row">
+									<form method="get" action="update">
+									<button class="table-link" type="submit">
+									<span class="fa-stack">
+										<i class="fa fa-square fa-stack-2x"></i>
+										<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+									</span>
+									</button>
+								 <input value={{id}} class="d-none" name="userNum">
+								</form>
+								<form id="xoa" method="get" action="delete">
+									<button type="submit" class="table-link danger">
+									<span class="fa-stack">
+										<i class="fa fa-square fa-stack-2x"></i>
+										<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+									</span>
+									</button>
+								 <input value={{id}} class="d-none" name="userNum">
+								</form>
+								</div>
+							</td>
+						</tr>
+						 {{/each}}
+					</tbody>
+				</table>
 			</div>
-		</div>
-		<ul class="pagination pull-right">
+			<ul class="pagination pull-right">
 				<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
 				<li><a href="#">1</a></li>
 				<li><a href="#">2</a></li>
@@ -76,6 +122,19 @@
 				<li><a href="#">5</a></li>
 				<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
 			</ul>
+		</div>
 	</div>
+</div>
+</div>
+<script>
+ $(document).ready(function(){
+   $("#myInput").on("keyup", function() {
+     var value = $(this).val().toLowerCase();
+     $("#myTable tr").filter(function() {
+       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+     });
+   });
+ });
+ </script>
 </body>
 </html>

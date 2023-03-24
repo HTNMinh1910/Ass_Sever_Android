@@ -22,15 +22,15 @@
                 <h1>Sign In</h1>
                 <div>Please login to use the platform</div>
             </div>
-            <form class="login-card-form" action="/">
+            <form class="login-card-form" action="/login" method="get">
                 <div class="form-item">
                     <span class="form-item-icon material-symbols-sharp">mail</span>
-                    <input type="text" placeholder="Enter Email" id="email" 
+                    <input type="email" placeholder="Enter Email" id="email" name="email"
                     autofocus required>
                 </div>
                 <div class="form-item">
                     <span class="form-item-icon material-symbols-sharp">lock</span>
-                    <input type="password" placeholder="Enter Password" id="password"
+                    <input type="password" placeholder="Enter Password" id="password" name="password"
                      required>
                 </div>
                 <div class="form-item-other">
@@ -43,7 +43,7 @@
                 <button type="submit">Sign In</button>
             </form>
             <div class="login-card-footer">
-                Don't have account? <a href="/signup">Create account.</a>
+                Don't have account? <a href="/createAcc">Create account.</a>
             </div>
         </div>
         <div class="login-card-social">

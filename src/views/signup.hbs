@@ -21,25 +21,25 @@
             <div class="login-card-header">
                 <h1>Sign Up</h1>
             </div>
-            <form class="login-card-form" action="/login">
+            <form class="login-card-form" action="/sign_up" method="post">
 
                 <div class="form-item">
-                    <input type="file" placeholder="Enter Image" id="img"
+                    <input type="file" placeholder="Enter Image" id="image" name="image"
                      required>
                 </div>
                 <div class="form-item">
                     <span class="form-item-icon material-symbols-sharp">mail</span>
-                    <input type="email" placeholder="Enter Email" id="email" 
+                    <input type="email" placeholder="Enter Email" id="email" name="email" 
                     required>
                 </div>
                 <div class="form-item">
                     <span class="form-item-icon material-symbols-sharp">person</span>
-                    <input type="text" placeholder="Enter Name" id="name"
+                    <input type="text" placeholder="Enter Name" id="name" name="name"
                      required>
                 </div>
                 <div class="form-item">
                     <span class="form-item-icon material-symbols-sharp">lock</span>
-                    <input type="password" placeholder="Enter Password" id="password"
+                    <input type="password" placeholder="Enter Password" id="password" name="password"
                      required>
                 </div>
                 <button type="submit">Sign Up</button>
