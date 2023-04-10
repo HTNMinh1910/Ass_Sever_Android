@@ -1,0 +1,60 @@
+<div class="login-card-container">
+    <div class="login-card">
+        <div class="login-card-logo">
+            <img src="https://cdn-icons-png.flaticon.com/512/9255/9255573.png" alt="logo">
+        </div>
+        <div class="login-card-header">
+                <h1>Sign In</h1>
+                <div>Please login to use the platform</div>
+        </div>
+        <form class="login-card-form" action="/signIn" method="get">
+            <div class="form-item">
+                <span class="material-symbols-outlined form-item-icon">mail</span>
+                <input type="email" placeholder="Enter Email" id="email" name="email"
+                autofocus required>
+            </div>
+            <div class="form-item">
+                <span class="material-symbols-outlined form-item-icon">lock</span>
+                <input type="password" placeholder="Enter Password" id="password" name="password"
+                 required>
+                </div>
+                {{#if wrong}}
+                <div class="row">
+                    <p class="text-danger">Tài khoản hoặc mật khẩu không hợp lệ!</p>
+                </div>
+                {{/if}}
+                <div class="form-item-other">
+                    <div class="checkbox">
+                        <input type="checkbox" id="remember" checked>
+                        <label for="rememberMeCheckbox">Remember me</label>
+                    </div>
+                    <a href="#">Forgot password!</a>
+                </div>
+                <button type="submit">Sign In</button>
+            </form>
+            <div class="login-card-footer">
+                Don't have account? <a href="/createAcc">Create account.</a>
+            </div>
+        </div>
+        <div class="login-card-social">
+            <div>Other Sign-In Options</div>
+            <div class="login-card-social-btns">
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook"
+                        width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"></path>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-google" width="24"
+                        height="24" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M17.788 5.108a9 9 0 1 0 3.212 6.892h-8"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>

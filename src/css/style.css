@@ -4,11 +4,11 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    min-height: 100vh;
+    min-height: 90vh;
     background: linear-gradient(to right, #a4a4dd, #eed0d0);
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
 }
 
 
@@ -119,6 +119,7 @@ body {
 
 /* Login Card Form Elements */
 .login-card input[type="text"],
+.login-card input[type="file"],
 .login-card input[type="password"],
 .login-card input[type="email"] {
     border: none;
@@ -213,4 +214,3 @@ body {
     }
 
 }
-/* ---------- */

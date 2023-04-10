@@ -1,13 +1,3 @@
-body{
-	/* font-family: 'Poppins', sans-serif; */
-    /* min-height: 10vh; */
-    background: linear-gradient(to right, #a4a4dd, #eed0d0);
-    /* display: flex; */
-    /* justify-content: center;
-    align-items: center; */
-    margin-top:20px;
-}
-
 
 /* USER LIST TABLE */
 .user-list tbody td > img {

@@ -1,0 +1,178 @@
+
+    <div class="row">
+        </div>
+        <button class="bg-success bg-gradient border-0 mt-3 mb-3 p-2 rounded text-light" data-bs-toggle="modal" data-bs-target="#modalAdd" data-bs-whatever="@getbootstrap">Thêm sản phẩm</button>
+   <div class="container d-flex justify-content-center">
+    {{#each data}}
+     <figure class="card card-product-grid card-lg"> <a href="#" class="img-wrap" data-abc="true"> <img src="//public/kazuha.png"> </a>
+         <figcaption class="info-wrap">
+             <div class="row">
+                 <div class="col-md-9 col-xs-9"> <a href="#" class="title" data-abc="true" style="font-size: smaller;">Tên sản phẩm: {{name}}</a> <span class="rated">Loại sản phẩm: {{type}}</span> </div>
+                 <div class="col-md-3 col-xs-3">
+                     <div class="rating text-right"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="rated">Rated 4.0/5</span> </div>
+                 </div>
+             </div>
+         </figcaption>
+         <div class="bottom-wrap-payment">
+             <figcaption class="info-wrap">
+                 <div class="row">
+                     <div class="col-md-9 col-xs-9"> <a href="#" class="title" data-abc="true" style="font-size: smaller;">Giá: {{price}}</a> <span class="rated">Đăng bởi: {{username}}</span> </div>
+                     <div class="col-md-3 col-xs-3">
+                         <div class="rating text-right" style="font-size: smaller;">Màu sắc: {{color}}</div>
+                     </div>
+                 </div>
+             </figcaption>
+         </div>
+         <figcaption class="info-wrap">
+            <div class="col-md-12 col-xs-12">
+             <span class="material-symbols-outlined" style="margin-left: 10%;">
+                <a href="#"style="text-decoration: none; font-size: smaller;" data-bs-toggle="modal" data-bs-target="#modalEdit" data_id="{{this._id}}">edit</a>
+            </span>
+            <span class="material-symbols-outlined" style="margin-left: 10%;">
+                <a href="#" style="text-decoration: none; font-size: smaller;" data-bs-toggle="modal" data-bs-target="#modalDelete" data_id="{{this._id}}">delete</a>
+            </span>
+            <span class="material-symbols-outlined" style="margin-left: 10%;">
+                <a href="#" style="text-decoration: none; font-size: smaller;" data-bs-toggle="modal" data-bs-target="#modalDetail" data_id="{{this._id}}">info</a>
+            </span>
+         </div>
+         </figcaption>
+     </figure>
+     {{/each}}
+ </div>
+
+ 
+<!-- Modal -->
+<div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm delete</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        You sure you want to delete this item ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <form  method="post" name="formDel">
+          <button type="button" id="btn_delete" class="btn btn-primary">Save changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modalDelete = document.getElementById('modalDelete')
+  modalDelete.addEventListener('show.bs.modal', event => {
+    const button = event.relatedTarget
+    const idDel = button.getAttribute('data_id')
+    const formDel = document.forms['formDel'];
+    const btn_delete = document.getElementById('btn_delete');
+    btn_delete.onclick = function () {
+          formDel.action = `listProduct/deleteProduct/${idDel}?_method=DELETE`;
+          formDel.submit();
+      }
+  })
+</script>
+
+<div class="modal fade" id="modalAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Users</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" name="formAdd">
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Price:</label>
+            <input type="number" class="form-control" id="price" name="price" required>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Color:</label>
+            <input type="text" class="form-control" id="color" name="color" required>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Image:</label>
+            <input type="text" class="form-control" id="img" name="img" required>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Type:</label>
+            <input type="text" class="form-control" id="type" name="type" required>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Username:</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" id="btn_send" class="btn btn-primary">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modalAddEdit = document.getElementById('modalAdd');
+  modalAddEdit.addEventListener('show.bs.modal', event => {
+    const button = event.relatedTarget;
+    const btn_send = document.getElementById('btn_send');
+    const formAdd = document.forms['formAdd'];
+    btn_send.onclick = function () {
+        formAdd.action = 'listProduct/addProduct'
+        formAdd.submit();
+      }
+  })
+</script>
+<div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Users</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form method="post" name="modalEdit">
+        {{!-- {{#each edit}} --}}
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{edit.name}}" required>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{edit.email}}" required>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Avatar:</label>
+            <input type="file" class="form-control" id="avatar" name="avatar" value="{{edit.avatar}}" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" id="btn_edit" class="btn btn-primary">Send</button>
+          </div>
+          {{!-- {{/each}} --}}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const modalEdit = document.getElementById('modalEdit')
+  modalEdit.addEventListener('show.bs.modal', event => {
+    const button = event.relatedTarget
+    const idEdit = button.getAttribute('data_id')
+    const formEdit = document.forms['modalEdit'];
+    const btn_edit = document.getElementById('btn_edit')
+    btn_edit.onclick = function () {
+        formEdit.action = `listProduct/updateProduct/${idEdit}?_method=PUT`
+        formEdit.submit();
+      }
+  })
+</script>
